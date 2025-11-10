@@ -1,6 +1,6 @@
 {
   "name": "ant-mobile-icons-vue3",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A mobile Ant Design UI Icons library based on Vue 3",
   "author": "zhangyanming",
   "keywords": [
@@ -24,7 +24,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly --outDir dist"
+    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly --outDir dist",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
@@ -40,11 +41,17 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
     },
     "./es/*": {
       "types": "./es/*.vue",
       "import": "./es/*.vue"
-    }
-  }
+    },
+    "./style.css": "./dist/style.css",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "./dist/style.css"
+  ]
 }
